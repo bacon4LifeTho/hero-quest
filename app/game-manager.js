@@ -6,11 +6,26 @@ const player = {
 }
 
 function healPlayer() {
-  // STUB
+  if (player.potionsc> 0) {
+    player.potions--
+    player.currentHealth += 10
+    enemyTurn()
+    drawPlayer()
+    drawCurrentEnemy() 
+  } else {
+    messageUser("You don't have any ptions")
+  }
 }
 
 function attackEnemy() {
-  // STUB
+  enemyTurn()
+  currentEnemy.health -= player.attackPower
+if (currentEnemy.health <= 0) {
+  rewardPlayer()
+    pickRandomEnemyFromCurrentStage()
+}
+drawPlayer()
+drawCurrentEnemy()
 }
 
 function drawPlayer() {
@@ -22,23 +37,47 @@ function drawPlayer() {
 }
 
 function drawCurrentEnemy() {
-  //  STUB
+  document.getElementById('enemy-type').inertext = currentEnemy.type
+  document.getElementById('enemy-heath').inertext = '💖 '+currentEnemy.health
 }
 
 function enemyTurn() {
-  // STUB
-}
+  const enemyDamage = Math.floor(Math.random() * currentEnemy.maxAttackPower)
+  player.currentHealth -= enemyDamage
+  messageUser("💔 took " + enemyDamage + " Damage ")
+  if (player.currentHealth <= 0) {
+    messageUser("You have died, loser")
+    showGameOver()
+  }
+} 
 
 function rewardPlayer() {
-  // STUB
+  player.gold += currentEnemy.gold
+  if (player.gold >= 10000) {
+    messageUser("Congratulations, you are rick enough to stop adventuring")
+    showVictory()
+  }
 }
 
 function buyPotion() {
-  // STUB
+  if (player.gold >= 5) {
+    player.potions++
+    player.gold -= 5
+    messageUser("Potions: " + player.potions)
+    drawPlayer()
+  } else {
+    messageUser(Not Enough Gold)
+  }
 }
 
 function increaseAttack() {
-  // STUB
+  if (player.gold >+ 10) {
+    player.attackPower += 5
+    player.gold -= 10
+    messageUser("Attack Up")
+    drawPlayer()
+  }  else {
+    messageUser("Not Enough Gold")
+  }
 }
-
 drawPlayer()

@@ -5,7 +5,7 @@ let stage1Screen = document.getElementById('stage-1-screen')
 let stage2Screen = document.getElementById("stage-2-screen")
 let stage3Screen = document.getElementById("stage-3-screen")
 let victoryScreen = document.getElementById("victory-screen")
-let gameOverScreen = document.getElementsById("game-over-screen")
+let gameOverScreen = document.getElementById("game-over-screen")
 function hideActiveScreen() {
   document.querySelector('.screen.show')?.classList.remove('show')
 }
