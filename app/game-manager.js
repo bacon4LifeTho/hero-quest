@@ -38,7 +38,7 @@ function drawPlayer() {
 
 function drawCurrentEnemy() {
   document.getElementById('enemy-type').inertext = currentEnemy.type
-  document.getElementById('enemy-heath').inertext = '💖 '+currentEnemy.health
+  document.getElementById('enemy-health').inertext = '💖 '+currentEnemy.health
 }
 
 function enemyTurn() {
@@ -66,7 +66,7 @@ function buyPotion() {
     messageUser("Potions: " + player.potions)
     drawPlayer()
   } else {
-    messageUser(Not Enough Gold)
+    messageUser("Not Enough Gold")
   }
 }
 
